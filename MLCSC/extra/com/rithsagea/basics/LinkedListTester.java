@@ -70,7 +70,7 @@ public class LinkedListTester {
 		int[] values = {7, 29, 10, 14};
 		LinkedList list = createList(values);
 		
-		for(int x = 0; x < 5; x++) {
+		for(int x = 0; x < 4; x++) {
 			assertEquals("incorrect value", values[x], list.get(x));
 		}
 	}
@@ -100,7 +100,7 @@ public class LinkedListTester {
 		try { list.insert(14, 5); } catch (Exception e) { fail("insert at last"); }
 		
 		List<Integer> listValues = getValues(list);
-		List<Integer> expectedValues = Arrays.asList(19, 23, 47, 157, 63, 14);
+		List<Integer> expectedValues = Arrays.asList(19, 23, 157, 47, 63, 14);
 		
 		assertEquals(expectedValues, listValues);
 	}
