@@ -1,5 +1,16 @@
 package com.rithsagea.basics;
 
+/**
+ * 
+ * Skeleton Linked List Class
+ * 
+ * The root node should have a value of -1
+ * all actual stored values should begin at
+ * the root's child
+ * 
+ * @author Rithsagea
+ *
+ */
 public class LinkedList {
 	
 	/**

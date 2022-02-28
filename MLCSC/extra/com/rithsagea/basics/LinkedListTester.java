@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -31,7 +30,7 @@ public class LinkedListTester {
 	 * @param values the values to add to the list
 	 * @return the created list
 	 */
-	private List<Integer> getValues(LinkedList list) {
+	private int[] getValues(LinkedList list) {
 		List<Integer> res = new ArrayList<>();
 		Node node = list.getRoot();
 		while(node.getChild() != null) {
@@ -39,7 +38,7 @@ public class LinkedListTester {
 			res.add(node.getVal());
 		}
 		
-		return res;
+		return res.stream().mapToInt(i->i).toArray();
 	}
 	
 	@Test
@@ -53,7 +52,7 @@ public class LinkedListTester {
 		int[] expectedValues = {-1, 1, 20, -5, 13};
 		
 		for(int x = 0; x < expectedValues.length; x++) {
-			assertEquals("incorrect Value at node " + x, expectedValues[x], node.getVal());
+			assertEquals("incorrect value at node " + x, expectedValues[x], node.getVal());
 			node = node.getChild();
 		}
 		
@@ -85,8 +84,8 @@ public class LinkedListTester {
 		assertEquals("removing last element", 14, list.remove(4));
 		assertEquals("removing first element", 19, list.remove(0));
 		
-		List<Integer> listValues = getValues(list);
-		List<Integer> expectedValues = Arrays.asList(23, 47, 157);
+		int[] listValues = getValues(list);
+		int[] expectedValues = {23, 47, 157};
 		
 		assertEquals(expectedValues, listValues);
 	}
@@ -100,8 +99,8 @@ public class LinkedListTester {
 		list.insert(19, 0);
 		list.insert(14, 5);
 		
-		List<Integer> listValues = getValues(list);
-		List<Integer> expectedValues = Arrays.asList(19, 23, 157, 47, 63, 14);
+		int[] listValues = getValues(list);
+		int[] expectedValues = {19, 23, 157, 47, 63, 14};
 		
 		assertEquals(expectedValues, listValues);
 	}
