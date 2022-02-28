@@ -2,7 +2,6 @@ package com.rithsagea.basics;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +11,11 @@ import org.junit.Test;
 
 public class LinkedListTester {
 	
+	/**
+	 * Creates a LinkedList from the given values
+	 * @param values the values to add to the list
+	 * @return the created list
+	 */
 	private LinkedList createList(int... values) {
 		LinkedList list = new LinkedList();
 		
@@ -22,6 +26,11 @@ public class LinkedListTester {
 		return list;
 	}
 	
+	/**
+	 * Creates a LinkedList from the given values
+	 * @param values the values to add to the list
+	 * @return the created list
+	 */
 	private List<Integer> getValues(LinkedList list) {
 		List<Integer> res = new ArrayList<>();
 		Node node = list.getRoot();
@@ -37,23 +46,15 @@ public class LinkedListTester {
 	public void testAdd() {
 		LinkedList list = null;
 		
-		try {
-			list = createList(1, 20, -5, 13);
-		} catch(Exception e) {
-			fail("error adding element to list");
-		}
+		list = createList(1, 20, -5, 13);
 		
 		Node node = list.getRoot();
 		
 		int[] expectedValues = {-1, 1, 20, -5, 13};
 		
 		for(int x = 0; x < expectedValues.length; x++) {
-			try {
-				assertEquals("incorrect Value at node " + x, expectedValues[x], node.getVal());
-				node = node.getChild();
-			} catch(NullPointerException e) {
-				fail("incorrect list length, too short");
-			}
+			assertEquals("incorrect Value at node " + x, expectedValues[x], node.getVal());
+			node = node.getChild();
 		}
 		
 		assertNull("incorrect list length, too long", node);
@@ -95,9 +96,9 @@ public class LinkedListTester {
 		int[] values = {23, 157, 63};
 		LinkedList list = createList(values);
 		
-		try { list.insert(47, 2); } catch (Exception e) { fail("insert element"); }
-		try { list.insert(19, 0); } catch (Exception e) { fail("insert at first"); }
-		try { list.insert(14, 5); } catch (Exception e) { fail("insert at last"); }
+		list.insert(47, 2);
+		list.insert(19, 0);
+		list.insert(14, 5);
 		
 		List<Integer> listValues = getValues(list);
 		List<Integer> expectedValues = Arrays.asList(19, 23, 157, 47, 63, 14);
