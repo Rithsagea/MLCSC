@@ -26,9 +26,9 @@ public class LinkedListTester {
 	}
 	
 	/**
-	 * Creates a LinkedList from the given values
-	 * @param values the values to add to the list
-	 * @return the created list
+	 * Gets the values from a LinkedList as an int[]
+	 * @param list the list to get values from
+	 * @return the values
 	 */
 	private int[] getValues(LinkedList list) {
 		List<Integer> res = new ArrayList<>();
